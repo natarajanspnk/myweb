@@ -1,0 +1,508 @@
+/* --- CSS VARIABLES & RESET --- */
+:root {
+    --bg-color: #050505;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --border-color: #0400ff;
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- FLOATING GLASS NAV --- */
+.side-nav {
+    position: fixed;
+    left: 2rem;
+    /* "Floating" away from the edge */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+
+    /* The Glass Effect */
+    background: rgba(20, 20, 20, 0.6);
+    /* Semi-transparent dark base */
+    backdrop-filter: blur(12px);
+    /* The blur magic */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    /* Subtle white border */
+
+    /* The Shape */
+    padding: 1.5rem 0.8rem;
+    border-radius: 24px;
+    /* Rounded capsule shape */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* Tighter spacing */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Deep shadow for 3D float */
+    transition: transform 0.3s ease;
+}
+
+.side-nav:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    /* Brighten border on hover */
+}
+
+/* The Links */
+.side-nav a {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    /* Mini text */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 16px;
+    border-radius: 12px;
+    /* Mini pill buttons */
+    transition: all 0.3s ease;
+    text-align: left;
+    position: relative;
+    text-decoration: none;
+    border-bottom: none;
+    /* Remove global link underline */
+}
+
+
+/* Active State (Current Section) */
+.side-nav a.active {
+    background: var(--text-main);
+    /* Solid White Pill */
+    color: var(--bg-color);
+    /* Black Text */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    /* Glow */
+}
+
+/* Hide on Mobile/Tablet */
+@media (max-width: 1100px) {
+    .side-nav {
+        display: none;
+    }
+
+    .container {
+        padding: 4rem 1.5rem;
+    }
+}
+
+/* --- LAYOUT UTILITIES --- */
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+}
+
+section {
+    margin-bottom: 5rem;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+
+}
+
+h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1.4rem;
+    margin-bottom: 2rem;
+    border-bottom: 10px solid var(--border-color);
+    padding-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: #fff;
+}
+
+p {
+    color: #cccccc;
+    margin-bottom: 1rem;
+
+}
+
+a {
+    color: var(--text-main);
+    text-decoration: dashed;
+    border-bottom: 1px solid var(--text-main);
+    transition: 0.3s;
+    border-style: none;
+}
+
+a:hover {
+    color: var(--border-color);
+    border-style: none;
+}
+
+.hyperlink {
+    fill: var(--text-main);
+    width: 18px;
+    height: 18px;
+    border-style: none;
+    position: relative;
+
+    svg {
+
+        display: block;
+    }
+
+    left: 2px;
+}
+
+.hyperlink:hover {
+    fill: var(--border-color);
+    border-style: none;
+}
+
+/* --- BUTTON STYLE --- */
+.btn-download {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 14px 32px;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    background: transparent;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    /* Overriding default link styles */
+    text-decoration: none;
+    border-bottom: 1px solid var(--text-main);
+}
+
+.btn-download:hover {
+    background-color: var(--text-main);
+    color: var(--bg-color);
+    /* Turns text black */
+    border-color: var(--text-main);
+}
+
+/* --- HERO SECTION --- */
+.hero-title {
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.bio {
+    font-size: 1.2rem;
+    max-width: 600px;
+    color: var(--text-muted);
+}
+
+.highlight {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+/* --- GRID LAYOUTS --- */
+.item-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.item-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+.item-details h3 {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-details .subtitle {
+    font-weight: 400;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.item-details ul {
+    list-style: none;
+}
+
+.item-details li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+.item-details li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--text-muted);
+}
+
+/* --- GLASS TIMELINE STYLES --- */
+.timeline-container {
+    position: relative;
+    padding-left: 3rem;
+    /* Space for the line */
+    border-left: 2px solid #222;
+    /* The vertical line */
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+/* The glowing dot on the timeline */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -3.55rem;
+    /* Aligns dot with the line */
+    top: 25px;
+    /* Adjust based on card padding */
+    width: 12px;
+    height: 12px;
+    background-color: var(--bg-color);
+    border: 2px solid var(--text-main);
+    border-radius: 50%;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.timeline-item:hover::before {
+    background-color: var(--border-color);
+    /* Fills dot white on hover */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    /* Glow effect */
+}
+
+/* The Glass Card */
+.glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    /* Very transparent white */
+    backdrop-filter: blur(10px);
+    /* The blur magic */
+    -webkit-backdrop-filter: blur(10px);
+    /* Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Subtle border */
+    border-radius: 16px;
+    padding: 2rem;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    /* Slight lift */
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Adjustments for content inside the glass card */
+.glass-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.glass-header h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.glass-header .role {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.glass-date {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #fff;
+    white-space: nowrap;
+}
+
+/* --- SKILLS TAGS --- */
+.skills-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2.5rem;
+    align-content: left;
+}
+
+.skill-group strong {
+    color: #fff;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.skill-group li {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    list-style: none;
+}
+
+/* --- AWARDS SPECIAL --- */
+.award-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: left;
+    padding: 1rem 0;
+    border-bottom: 5px dotted #1a1a1a;
+}
+
+.award-title {
+    font-weight: 900;
+    color: #fff;
+}
+
+.award-org {
+    color: var(--text-muted);
+    margin-left: 0.5rem;
+}
+
+.award-note {
+    color: var(--text-muted);
+    margin-left: 1rem;
+}
+
+.project-container {
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- FOOTER --- */
+
+.card {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.card a {
+    flex-direction: row;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(900px);
+}
+
+.card-links {
+    word-spacing: 2px;
+    flex-direction: row;
+    border-style: none;
+    text-decoration: none;
+}
+
+footer p {
+    color: var(--border-color);
+    font-size: 1rem;
+}
+
+/* --- MOBILE --- */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .item-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .item-date {
+        margin-bottom: 0.2rem;
+    }
+
+    footer {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+
+    .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* --- SCROLL ANIMATIONS --- */
+.hidden {
+    opacity: 0;
+    filter: blur(2px);
+    /* Slight blur for a premium feel */
+    transform: translateY(20px);
+    /* Push element down 20px */
+    transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Smooth easing */
+}
+
+.show {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+    /* Return to natural position */
+}
+
+/* Optional: Stagger the delay for list items so they don't load all at once */
+.item-row:nth-child(2) {
+    transition-delay: 100ms;
+}
+
+.item-row:nth-child(3) {
+    transition-delay: 200ms;
+}
